@@ -54,7 +54,7 @@ public class TaskController {
     public ResponseEntity<TaskDto> create( @RequestBody TaskDto taskDto ) {
         try {
             tasksservice.create(mapeo.map(taskDto, Task.class));
-            return new ResponseEntity<>(null, HttpStatus.ACCEPTED);
+            return new ResponseEntity<>(taskDto, HttpStatus.ACCEPTED);
         } catch (Exception e) {
             e.printStackTrace();
             return new ResponseEntity<>(null, HttpStatus.NOT_FOUND);
@@ -65,7 +65,7 @@ public class TaskController {
     public ResponseEntity<TaskDto> update( @RequestBody TaskDto task, @PathVariable String id ) {
         try {
             tasksservice.update(mapeo.map(task, Task.class), id);
-            return new ResponseEntity<>(null, HttpStatus.ACCEPTED);
+            return new ResponseEntity<>(task, HttpStatus.ACCEPTED);
         } catch (Exception e) {
             e.printStackTrace();
             return new ResponseEntity<>(null, HttpStatus.NOT_FOUND);
