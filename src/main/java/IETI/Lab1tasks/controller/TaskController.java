@@ -23,11 +23,12 @@ public class TaskController {
     public TaskController(@Autowired TaskService taskservices){
         this.tasksservice = taskservices;}
 
+
     @GetMapping
     public ResponseEntity<List<TaskDto>> getAll() {
         List<TaskDto> DTOtareas = new ArrayList<>();
         List<Task> listatareas = tasksservice.getAll();
-        for (int i = 0; i< listatareas.size(); i++){
+        for (int i = 0; i < listatareas.size(); i++){
             DTOtareas.add(mapeo.map(listatareas.get(i), TaskDto.class));
         }
         try{

@@ -14,8 +14,8 @@ public class TaskServiceHashMap implements TaskService{
 
     @Override
     public Task create(Task task) {
-        tasks.putIfAbsent(task.getId(),task);
-        return task;
+        tasks.put(task.getId(), task);
+        return tasks.get(task.getId());
     }
 
     @Override
@@ -34,6 +34,7 @@ public class TaskServiceHashMap implements TaskService{
         List<Task> tareas = new ArrayList<>();
         for (String id: tasks.keySet()){
             tareas.add(tasks.get(id));
+            System.out.println(tareas);
         }
         return tareas;
     }

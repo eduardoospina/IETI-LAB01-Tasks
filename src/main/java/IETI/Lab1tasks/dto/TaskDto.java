@@ -14,14 +14,34 @@ public class TaskDto {
     private String dueDate;
     private String createdAt;
 
-    public TaskDto(String name, String description, Status status, String AssignedTo, String dueDate){
+    public TaskDto(){
         this.id = String.valueOf((int)(Math.random()*9));
+        this.createdAt = LocalDate.now().toString();
+
+    }
+
+    public TaskDto(String name, String description, Status status, String AssignedTo, String dueDate){
+        this();
         this.name = name;
         this.description = description;
         this.status = status;
         this.AssignedTo = AssignedTo;
         this.dueDate = dueDate;
-        this.createdAt = LocalDate.now().toString();
+    }
+
+    public TaskDto(String id, String name, String description, Status status, String assignedTo, String dueDate, String createdAt){
+        this(name, description, status, assignedTo, dueDate);
+        this.id = id;
+        this.createdAt = createdAt;
+    }
+
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
     }
 
     public String getName() {
@@ -66,5 +86,9 @@ public class TaskDto {
 
     public String getCreatedAt() {
         return createdAt;
+    }
+
+    public void setCreatedAt(String createdAt) {
+        this.createdAt = createdAt;
     }
 }
